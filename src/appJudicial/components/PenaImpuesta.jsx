@@ -10,25 +10,25 @@ export const PenaImpuesta = () => {
 
 
             <label htmlFor="anios" className="form-label">Años</label>
-                    <input type="number" className="form-control text-center rounded" id="anios" value="0"
+                    <input type="number" className="form-control text-center rounded" id="anios" 
                         min="0" max="50" />
                 </div>
                 <div className="col-3 justify-content-center align-items-center">
 
                     <label htmlFor="meses" className="form-label">Meses</label>
-                    <input type="number" className="form-control text-center rounded" id="mes" value="0"
+                    <input type="number" className="form-control text-center rounded" id="mes" 
                         min="0" max="12" />
                 </div>
                 <div className="col-3 justify-content-center align-items-center">
 
                     <label htmlFor="dias" className="form-label">Días</label>
-                    <input type="number" className="form-control text-center rounded" id="dias" value="0"
+                    <input type="number" className="form-control text-center rounded" id="dias"
                         min="0" max="30" />
 
                 </div>
                 <div className="col-3 d-flex justify-content-end align-items-end">
                     <button className="btn btn-outline-primary">
-                        calcular
+                        Calcular
                     </button>
 
                 </div>

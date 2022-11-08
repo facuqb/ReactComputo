@@ -9,7 +9,7 @@ export const Navbar = () => {
         })}
 
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2 sticky-xl-top">
             
             <Link 
                 className="navbar-brand" 
@@ -37,11 +37,11 @@ export const Navbar = () => {
                 </div>
             </div>
 
-            <div className="navbar-collapse collapse w-25 order-3 dual-collapse2 d-flex justify-content-end">
+            <div className="navbar-collapse collapse w-25 order-3 dual-collapse2 d-flex justify-content-end align-items-center">
                 <ul className="navbar-nav ml-auto">
                     <span
                         className='nav-item nav-link text-info'>
-                        Usuario
+                        ADMIN
                     </span>
                     <button
                         className='nav-item nav-link btn'

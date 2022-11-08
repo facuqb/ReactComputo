@@ -7,7 +7,7 @@ export const AppJudicialRoutes = () => {
   return (
     <>
         <Navbar />
-        <div className="container">
+        <div className="container-xl">
             <Routes>
                 <Route path="computo" element={<ComputoPage />} />
                 <Route path="pena" element={<PenaPage />}/>
