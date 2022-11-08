@@ -6,7 +6,10 @@ export const condenaRestante = (diasAcumulados, condenaDias, condenaMes, condena
     condena = condena.reduce((a,b) => a+b, 0);
     let pendiente = 0;
     let resto = condena - diasAcumulados;
-    if (resto % 360 === 0){
+    if(resto <= 0){
+        condena = []
+        pendiente = "El tiempo de detencion excede la condena impuesta"
+    } else if (resto % 360 === 0){
         condena = []
         condena[0] = Math.floor(resto/360)
         condena[1] = 0
@@ -24,9 +27,9 @@ export const condenaRestante = (diasAcumulados, condenaDias, condenaMes, condena
         if(condena[0] > 1 && condena[1] > 1){
             pendiente = `${condena[0]} años y ${condena[1]} meses`
         }else if(condena[0] === 1 && condena[1] > 1){
-            pendiente = `${condena[0]} año y ${condena[1]} mes/meses`
+            pendiente = `${condena[0]} año y ${condena[1]} ${condena[1] === 1 ? 'mes' : 'meses'}`
         }else{
-            pendiente = `${condena[0]} año y ${condena[1]} meses`
+            pendiente = `${condena[0]} año y ${condena[1]} ${condena[1] === 1 ? 'mes' : 'meses'}`
         }
     } else if (resto > 360){
         condena = []
@@ -34,11 +37,11 @@ export const condenaRestante = (diasAcumulados, condenaDias, condenaMes, condena
         condena[1] = Math.floor((resto%360)/30)
         condena[2] = (resto%360)%30
         if(condena[0] > 1 && condena[1] > 1){
-            pendiente = `${condena[0]} años, ${condena[1]} meses y ${condena[2]} día/s`
+            pendiente = `${condena[0]} años, ${condena[1]} meses y ${condena[2]} ${condena[2] === 1 ? 'dia' : 'dias'}`
         }else if(condena[0] === 1 && condena[1] > 1){
-            pendiente = `${condena[0]} años, ${condena[1]} mes y ${condena[2]} día/s`
+            pendiente = `${condena[0]} años, ${condena[1]} mes y ${condena[2]} ${condena[2] === 1 ? 'dia' : 'dias'}`
         }else{
-            pendiente = `${condena[0]} año, ${condena[1]} mese y ${condena[2]} día/s`
+            pendiente = `${condena[0]} ${condena[0] === 1 ? 'año' : 'años'}${condena[1] === 0 ? "" : ", " + condena[1]} ${condena[1] === 0 ? "" : "mes"} y ${condena[2]} ${condena[2] === 1 ? 'dia' : 'dias'}`
         }
     } else if (resto > 30 && resto % 30 !== 0){
         condena = []
@@ -46,9 +49,9 @@ export const condenaRestante = (diasAcumulados, condenaDias, condenaMes, condena
         condena[1] = Math.floor(resto/30)
         condena[2] = resto%30
         if(condena[1] > 1){
-            pendiente = `${condena[1]} meses y ${condena[2]} días`
+            pendiente = `${condena[1]} meses y ${condena[2]} ${condena[2] === 1 ? 'dia' : 'dias'}`
         }else{
-            pendiente = `${condena[1]} mes y ${condena[2]} días`
+            pendiente = `${condena[1]} mes y ${condena[2]} ${condena[2] === 1 ? 'dia' : 'dias'}`
         }
     } else if (resto % 30 === 0){
         condena = []
@@ -65,7 +68,7 @@ export const condenaRestante = (diasAcumulados, condenaDias, condenaMes, condena
         condena[0] = 0
         condena[1] = 0
         condena[2] = resto
-        pendiente = `${condena[2]} días`;
+        pendiente = `${condena[2]} ${condena[2] === 1 ? 'dia' : 'dias'}`;
     } 
     return {condena, pendiente}
 }

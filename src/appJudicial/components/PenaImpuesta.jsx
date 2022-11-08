@@ -21,11 +21,9 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
         <form
             className="form-control mt-3 p-3 me-2 d-flex flex-column justify-content-between">
             <h2 className="text-center mb-1 px-5">Introduzca el monto de la condena</h2>
-            <div className="container row">
-            <div className="col-3 justify-content-center align-items-center">
-
-
-            <label htmlFor="anios" className="form-label">Años</label>
+            <div className="container row g-4">
+                <div className="col-3 justify-content-center align-items-center">
+                    <label htmlFor="anios" className="form-label">Años</label>
                     <input type="number" className="form-control text-center rounded" id="anios" 
                         min="0" max="50" 
                         name="condenaAnios"
@@ -51,7 +49,11 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
                         value={`${(condenaDias === 0) ? "" : condenaDias}`} />
 
                 </div>
-                <div className="col-3 d-flex justify-content-end align-items-end">
+                <div className="col-3 d-flex justify-content-start align-items-end">
+                    <button className="btn btn-outline-danger me-2"
+                    onClick={onResetForm}>
+                        Reset
+                    </button>
                     <button className="btn btn-outline-primary"
                     onClick={onCalcularCondenaRestante}>
                         Calcular

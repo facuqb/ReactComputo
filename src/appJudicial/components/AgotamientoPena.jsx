@@ -4,7 +4,7 @@ import { useForm } from "../hooks/useForm"
 
 export const AgotamientoPena = ({condena}) => {
 
-  const {onInputChange, setFormState, formState, fechaComputo, agotamientoPena} = useForm({fechaComputo: "", agotamientoPena: ""})
+  const {onInputChange, setFormState, formState, fechaComputo, agotamientoPena, onResetForm} = useForm({fechaComputo: "", agotamientoPena: ""})
 
   const onCalculoAgotamiento = (e) =>{
     e.preventDefault();
@@ -29,11 +29,19 @@ export const AgotamientoPena = ({condena}) => {
       name="fechaComputo"
       onChange={onInputChange}
       value={fechaComputo}/>
-    <button
-      className="btn btn-outline-primary mt-4 d-block"
-      onClick={onCalculoAgotamiento}>
-      Calcular
-    </button>
+      <div className="d-flex justify-content-end">
+        <button
+          className="btn btn-outline-danger mt-4"
+          onClick={onResetForm}>
+          Reset
+        </button>
+        <button
+          className="btn btn-outline-primary mt-4 mx-2"
+          onClick={onCalculoAgotamiento}>
+          Calcular
+        </button>
+
+      </div>
     <label htmlFor="agotamientoPena" className="form-label mt-4 mb-2 "> Fecha de agotamiento: </label>
     <input className="form-control text-center bg-secondary bg-opacity-10"
         placeholder=""

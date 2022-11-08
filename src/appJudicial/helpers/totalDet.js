@@ -1,7 +1,7 @@
 export const totalDet = (periodos) =>{
     let periodoDias = periodos.map(periodo => periodo.dias)
 
-    let diasAcumulados = periodoDias.reduce((a,b) => a+b,0);
+    let diasAcumulados = periodoDias.reduce((a,b) => a+b);
     let detencion;
     if (diasAcumulados % 360 === 0){
         if(Math.floor(diasAcumulados/360) === 1){
@@ -21,19 +21,20 @@ export const totalDet = (periodos) =>{
         }
     } else if (diasAcumulados > 360){
         if(Math.floor(diasAcumulados/360) > 1 && Math.floor((diasAcumulados%360)/30) > 1){
-            detencion = `${Math.floor(diasAcumulados/360)} años, ${Math.floor((diasAcumulados%360)/30)} meses y ${(diasAcumulados%360)%30} día/s`
+            detencion = `${Math.floor(diasAcumulados/360)} años, ${Math.floor((diasAcumulados%360)/30)} meses y 
+            ${(diasAcumulados%360)%30} ${((diasAcumulados%360)%30 === 1) ? 'dia' : 'dias'}`
         }else if(Math.floor(diasAcumulados/360) > 1 && Math.floor((diasAcumulados%360)/30) === 1){
-            detencion = `${Math.floor(diasAcumulados/360)} años, ${Math.floor((diasAcumulados%360)/30)} mes y ${(diasAcumulados%360)%30} día/s`
+            detencion = `${Math.floor(diasAcumulados/360)} años, ${Math.floor((diasAcumulados%360)/30)} mes y ${(diasAcumulados%360)%30} ${((diasAcumulados%360)%30 === 1) ? 'dia' : 'dias'}`
         }else if(Math.floor(diasAcumulados/360) > 1 && Math.floor((diasAcumulados%360)/30) === 0){
-            detencion = `${Math.floor(diasAcumulados/360)} años y ${(diasAcumulados%360)%30} día/s`
+            detencion = `${Math.floor(diasAcumulados/360)} años y ${(diasAcumulados%360)%30} ${((diasAcumulados%360)%30 === 1) ? 'dia' : 'dias'}`
         }else{
-            detencion = `${Math.floor(diasAcumulados/360)} año y ${(diasAcumulados%360)%30} día/s`
+            detencion = `${Math.floor(diasAcumulados/360)} año y ${(diasAcumulados%360)%30} ${((diasAcumulados%360)%30 === 1) ? 'dia' : 'dias'}`
         }
     } else if (diasAcumulados > 30){
         if(Math.floor(diasAcumulados/30) > 1){
-            detencion = `${Math.floor(diasAcumulados/30)} meses y ${diasAcumulados%30} día/s`
+            detencion = `${Math.floor(diasAcumulados/30)} meses y ${diasAcumulados%30} ${((diasAcumulados%30) === 1) ? 'dia' : 'dias'}`
         }else{
-            detencion = `${Math.floor(diasAcumulados/30)} mes y ${diasAcumulados%30} día/s`
+            detencion = `${Math.floor(diasAcumulados/30)} mes y ${diasAcumulados%30} ${((diasAcumulados%30) === 1) ? 'dia' : 'dias'}`
         }
     } else if (diasAcumulados % 30 === 0){
         if(diasAcumulados/30 > 1){
@@ -42,7 +43,7 @@ export const totalDet = (periodos) =>{
             detencion = `${diasAcumulados/30} mes`;
         }
     } else if (diasAcumulados < 30){
-        detencion = `${diasAcumulados} día/s`;
+        detencion = `${diasAcumulados} ${(diasAcumulados === 1) ? 'dia' : 'dias'}`;
     }
     return {detencion, diasAcumulados}
 }

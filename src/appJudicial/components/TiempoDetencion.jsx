@@ -21,7 +21,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
 
     const onDetPeriodo = (e) =>{
         e.preventDefault()
-        if(fechaDet === "" || fechaLibertad === "") return
+        if(fechaDet === "" || fechaLibertad === "" || tiempoDet === "Periodo Invalido") return
         const {dias} = calculoDet(fechaDet,fechaLibertad);
         setFormState({
             ...formState,
@@ -36,7 +36,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
 
     const onCalcularTotal = (e) =>{
         e.preventDefault()
-        if(periodosDetencion === []) return
+        if(periodosDetencion.length === 0) return
         const {detencion, diasAcumulados} = totalDet(periodosDetencion)
         setFormState({
             ...formState,
@@ -131,12 +131,19 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
             
      
                     }
-                
-            <button
-                className='btn btn-outline-primary'
-                onClick={onCalcularTotal}>
-                    Calcular Total
-            </button>
+                <div>
+                    <button
+                        className='btn btn-outline-primary mx-2'
+                        onClick={onCalcularTotal}>
+                            Total
+                    </button>
+                    <button
+                        className='btn btn-outline-danger mx-2'
+                        onClick={onResetForm}>
+                        Reset
+                    </button>
+
+                </div>
             </div>
             
             <label className="form-label"
