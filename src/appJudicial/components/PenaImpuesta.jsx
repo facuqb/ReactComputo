@@ -1,6 +1,22 @@
+import { condenaRestante } from "../helpers/"
+import { useForm } from "../hooks/useForm"
 
 
-export const PenaImpuesta = () => {
+export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
+
+    const {formState, onInputChange, onResetForm, setFormState, condenaDias, condenaMes, condenaAnios, pendiente, condena } = useForm({condenaDias: 0,condenaMes: 0,condenaAnios: 0, pendiente: "", condena: []})
+
+    const onCalcularCondenaRestante = (e) =>{
+        e.preventDefault()
+        const {condena, pendiente} = condenaRestante(diasAcumulados, condenaDias, condenaMes, condenaAnios)
+        setFormState({
+            ...formState,
+            condena,pendiente
+        })
+        onCondena(condena)
+
+    }
+
     return (
         <form
             className="form-control mt-3 p-3 me-2 d-flex flex-column justify-content-between">
@@ -11,23 +27,33 @@ export const PenaImpuesta = () => {
 
             <label htmlFor="anios" className="form-label">Años</label>
                     <input type="number" className="form-control text-center rounded" id="anios" 
-                        min="0" max="50" />
+                        min="0" max="50" 
+                        name="condenaAnios"
+                        onChange={onInputChange}
+                        value={`${(condenaAnios === 0) ? "" : condenaAnios}`}/>
                 </div>
                 <div className="col-3 justify-content-center align-items-center">
 
                     <label htmlFor="meses" className="form-label">Meses</label>
                     <input type="number" className="form-control text-center rounded" id="mes" 
-                        min="0" max="12" />
+                        min="0" max="12" 
+                        name="condenaMes"
+                        onChange={onInputChange}
+                        value={`${(condenaMes === 0) ? "" : condenaMes}`}/>
                 </div>
                 <div className="col-3 justify-content-center align-items-center">
 
                     <label htmlFor="dias" className="form-label">Días</label>
                     <input type="number" className="form-control text-center rounded" id="dias"
-                        min="0" max="30" />
+                        min="0" max="30"
+                        name="condenaDias"
+                        onChange={onInputChange}
+                        value={`${(condenaDias === 0) ? "" : condenaDias}`} />
 
                 </div>
                 <div className="col-3 d-flex justify-content-end align-items-end">
-                    <button className="btn btn-outline-primary">
+                    <button className="btn btn-outline-primary"
+                    onClick={onCalcularCondenaRestante}>
                         Calcular
                     </button>
 
@@ -35,11 +61,14 @@ export const PenaImpuesta = () => {
 
             </div>
             <div>
-                <label htmlFor="totalCondena" className="form-label ms-2"> Condena por cumplir: </label>
+                <label htmlFor="totalCondena" className="form-label ms-2 "> Condena por cumplir: </label>
 
-                <input className="form-control text-center"
+                <input className="form-control text-center bg-secondary bg-opacity-10"
                     placeholder=""
-                    id="totalCondena" readOnly />
+                    id="totalCondena"
+                    name= 'pendiente'
+                    value={pendiente}
+                    readOnly />
             </div>
 
         </form>

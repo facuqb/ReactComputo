@@ -1,6 +1,23 @@
+import { calcularAgotamiento } from "../helpers"
+import { useForm } from "../hooks/useForm"
 
 
-export const AgotamientoPena = () => {
+export const AgotamientoPena = ({condena}) => {
+
+  const {onInputChange, setFormState, formState, fechaComputo, agotamientoPena} = useForm({fechaComputo: "", agotamientoPena: ""})
+
+  const onCalculoAgotamiento = (e) =>{
+    e.preventDefault();
+    if(isNaN(condena[0]) || (fechaComputo === "")) return;
+    const {agotamiento} = calcularAgotamiento(condena,fechaComputo);
+    setFormState({
+      ...formState,
+      agotamientoPena: agotamiento
+    });
+
+  }
+  
+  
   return (
     <form
     className="form-control mt-3 p-3">
@@ -8,15 +25,22 @@ export const AgotamientoPena = () => {
     </h2>
     <label htmlFor="fechaComp" className="form-label mb-2">Introduzca la fecha actual o de
         computo</label>
-    <input type="date" className="form-control" id="fechaComp" />
+    <input type="date" className="form-control" id="fechaComp" 
+      name="fechaComputo"
+      onChange={onInputChange}
+      value={fechaComputo}/>
     <button
-      className="btn btn-outline-primary mt-4 d-block">
+      className="btn btn-outline-primary mt-4 d-block"
+      onClick={onCalculoAgotamiento}>
       Calcular
     </button>
-    <label htmlFor="agotamientoPena" className="form-label mt-4 mb-2"> Fecha de agotamiento: </label>
-    <input className="form-control text-center"
+    <label htmlFor="agotamientoPena" className="form-label mt-4 mb-2 "> Fecha de agotamiento: </label>
+    <input className="form-control text-center bg-secondary bg-opacity-10"
         placeholder=""
-        id="agotamientoPena" readOnly />
+        id="agotamientoPena" 
+        name="agotamientoPena"
+        value={agotamientoPena}
+        readOnly />
 
 </form>
   )

@@ -4,8 +4,8 @@ import { useForm } from '../hooks/useForm'
 
 
 
-export const TiempoDetencion = () => {
-    const {onInputChange,onResetForm,fechaDet,fechaLibertad, tiempoDet, setFormState,formState,periodosDetencion,totalDetencion} = useForm({fechaDet: "", fechaLibertad: "", tiempoDet: 0, totalDetencion: 0, periodosDetencion: []})
+export const TiempoDetencion = ({onDiasAcumulados}) => {
+    const {onInputChange,onResetForm,fechaDet,fechaLibertad, tiempoDet, setFormState,formState,periodosDetencion,totalDetencion,diasTotales} = useForm({fechaDet: "", diasTotales : 0, fechaLibertad: "", tiempoDet: 0, totalDetencion: 0, periodosDetencion: []})
     
     
     
@@ -37,12 +37,13 @@ export const TiempoDetencion = () => {
     const onCalcularTotal = (e) =>{
         e.preventDefault()
         if(periodosDetencion === []) return
-        const {detencion} = totalDet(periodosDetencion)
+        const {detencion, diasAcumulados} = totalDet(periodosDetencion)
         setFormState({
             ...formState,
-            totalDetencion: detencion
+            totalDetencion: detencion,
+            diasTotales: diasAcumulados
         })
-
+        onDiasAcumulados(diasAcumulados)
     }
     
 
@@ -94,9 +95,9 @@ export const TiempoDetencion = () => {
                     <label className="form-label"
                     id="resultadoDet">Tiempo de detención: </label>
                     <input type="text" 
-                    className='form-control'
+                    className='form-control bg-secondary bg-opacity-10'
                     name='tiempoDet'
-                    value={tiempoDet} 
+                    value={`${(tiempoDet === 0) ? "" : tiempoDet}`} 
                     
                     readOnly/>
                     
@@ -113,13 +114,24 @@ export const TiempoDetencion = () => {
             <div className="container mt-3 d-flex align-items-center flex-column "
                 id="periodosDet">
                 <p className='text-center'>Periodos de detención:</p>
-                {
-                    periodosDetencion.map(periodo => (
-                        <p className='mb-4 rounded form-control' key={parseInt(Math.random()*5000)}>
-                            {periodo.fechaDetPer} a {periodo.fechaLibPer} = {periodo.detencion}
-                        </p>
-                    ))
-                }
+                
+
+                    {   (periodosDetencion.length === 0) 
+                            ? null
+                            : <div className='form-control mb-2 bg-secondary bg-opacity-10'>
+                                {
+                                    periodosDetencion.map((periodo,i) => (
+                                    <p className='text-center' key={parseInt(Math.random()*5000)}>
+                                    {i+1}° Periodo: <b>{periodo.fechaDetPer.split('-').reverse().join("/")}</b> al <b>{periodo.fechaLibPer.split('-').reverse().join("/")}</b> : {periodo.detencion}
+                                    </p>
+                                    ))}
+                            </div>
+                             
+
+            
+     
+                    }
+                
             <button
                 className='btn btn-outline-primary'
                 onClick={onCalcularTotal}>
@@ -128,11 +140,11 @@ export const TiempoDetencion = () => {
             </div>
             
             <label className="form-label"
-                id="resultadoTotalDet">Tiempo Total de detención: </label>
+                id="resultadoTotalDet">Tiempo total de detención: </label>
             <input type="text" 
-                   className='form-control'
+                   className='form-control bg-secondary bg-opacity-10'
                     name='totalDetencion'
-                    value={totalDetencion} 
+                    value={`${(totalDetencion === 0) ? "" : totalDetencion}`} 
                     
                     readOnly/>
 
