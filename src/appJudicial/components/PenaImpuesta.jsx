@@ -22,7 +22,7 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
             className="form-control mt-3 p-3 me-2 d-flex flex-column justify-content-between">
             <h2 className="text-center mb-1 px-5">Introduzca el monto de la condena</h2>
             <div className="container row g-4">
-                <div className="col-3 justify-content-center align-items-center">
+                <div className="col-lg-4 col-xxl-3 justify-content-center align-items-center">
                     <label htmlFor="anios" className="form-label">Años</label>
                     <input type="number" className="form-control text-center rounded" id="anios" 
                         min="0" max="50" 
@@ -30,7 +30,7 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
                         onChange={onInputChange}
                         value={`${(condenaAnios === 0) ? "" : condenaAnios}`}/>
                 </div>
-                <div className="col-3 justify-content-center align-items-center">
+                <div className="col-lg-4 col-xxl-3 justify-content-center align-items-center">
 
                     <label htmlFor="meses" className="form-label">Meses</label>
                     <input type="number" className="form-control text-center rounded" id="mes" 
@@ -39,7 +39,7 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
                         onChange={onInputChange}
                         value={`${(condenaMes === 0) ? "" : condenaMes}`}/>
                 </div>
-                <div className="col-3 justify-content-center align-items-center">
+                <div className="col-lg-4 col-xxl-3 justify-content-center align-items-center">
 
                     <label htmlFor="dias" className="form-label">Días</label>
                     <input type="number" className="form-control text-center rounded" id="dias"
@@ -49,7 +49,7 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
                         value={`${(condenaDias === 0) ? "" : condenaDias}`} />
 
                 </div>
-                <div className="col-3 d-flex justify-content-start align-items-end">
+                <div className="col-xl-3 d-flex justify-content-start align-items-end mb-4 mb-md-0">
                     <button className="btn btn-outline-danger me-2"
                     onClick={onResetForm}>
                         Reset

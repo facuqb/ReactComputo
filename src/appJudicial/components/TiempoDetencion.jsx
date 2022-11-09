@@ -62,7 +62,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
             <form 
                 className='container mx-2 row'
                 >
-                <div className='col-3'>
+                <div className='col-sm-6 col-xl-3 mb-3'>
                     <label 
                         htmlFor="fechaDet" 
                         className="form-label"
@@ -76,11 +76,11 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
                         onChange={onInputChange}/>
 
                 </div>
-                <div className='col-3'>
+                <div className='col-sm-6 col-xl-3 mb-3'>
                     <label 
                         htmlFor="fechaLib"
                         className="form-label">
-                        Fecha de libertad o computo:
+                        Fecha de libertad:
                     </label>
                     <input 
                         type="date" 
@@ -91,7 +91,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
                         onChange={onInputChange}/>
                         
                 </div>
-                <div className='col-3'>
+                <div className='col-sm-6 col-xl-3 mb-3'>
                     <label className="form-label"
                     id="resultadoDet">Tiempo de detención: </label>
                     <input type="text" 
@@ -102,7 +102,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
                     readOnly/>
                     
                 </div>
-                <div className='col-3 align-self-end'>
+                <div className='col-sm-6 col-xl-3 align-self-end mb-3'>
                     <button
                         className='btn btn-outline-primary w-100'
                         onClick={onDetPeriodo}>
@@ -118,7 +118,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
 
                     {   (periodosDetencion.length === 0) 
                             ? null
-                            : <div className='form-control mb-2 bg-secondary bg-opacity-10'>
+                            : <div className='form-control mb-4 bg-secondary bg-opacity-10'>
                                 {
                                     periodosDetencion.map((periodo,i) => (
                                     <p className='text-center' key={parseInt(Math.random()*5000)}>
@@ -131,7 +131,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
             
      
                     }
-                <div>
+                <div className='mb-4'>
                     <button
                         className='btn btn-outline-primary mx-2'
                         onClick={onCalcularTotal}>

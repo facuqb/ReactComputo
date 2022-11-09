@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
+
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
     const navigate = useNavigate();
     const onLogOut= () => {
         navigate("login",{
@@ -9,47 +14,64 @@ export const Navbar = () => {
         })}
 
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2 sticky-xl-top">
-            
-            <Link 
-                className="navbar-brand" 
-                to="/"
-            >
-                Legal Buddy
-            </Link>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2 sticky-md-top">
+            <div className="container-fluid">
+                <Link 
+                    className="navbar-brand" 
+                    to="/"
+                >
+                    Legal Buddy
+                </Link>
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
+                <button className="custom-toggler navbar-toggler" type="button"  aria-expanded={!isNavCollapsed ? true : false} onClick={handleNavCollapse}>
+                <span className="navbar-toggler-icon"></span>
+                </button>
 
-                    <NavLink 
-                        className={({isActive}) => `nav-item nav-link ${(isActive) ? 'active' : ''}`}
-                        to="/computo"
-                    >
-                        Computo-App
-                    </NavLink>
+                <div className={`${(isNavCollapsed ? 'collapse' : '')} navbar-collapse`}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <NavLink 
+                                className={({isActive}) => `nav-item nav-link ${(isActive) ? 'active' : ''}`}
+                                aria-current="page"
+                                to="/computo"
+                            >
+                                Computo-App
+                            </NavLink>
+                         </li>
+                         <li className='nav-item'>
+                            <NavLink 
+                                className={({isActive}) => `nav-item nav-link ${(isActive) ? 'active' : ''}`}
+                                to="/pena"
+                            >
+                                Pena-App
+                            </NavLink>
+                         </li>
 
-                    <NavLink 
-                        className={({isActive}) => `nav-item nav-link ${(isActive) ? 'active' : ''}`}
-                        to="/pena"
-                    >
-                        Pena-App
-                    </NavLink>
+                    </ul>
+
+                    <div className={` ${(isNavCollapsed ? 'collapse navbar-collapse' : '')} order-3 dual-collapse2 d-flex justify-content-end align-items-center`}>
+                        <ul className="navbar-nav ml-auto">
+                            <span
+                                className='nav-item nav-link text-info'>
+                                ADMIN
+                            </span>
+                            <button
+                                className='nav-item nav-link btn'
+                                onClick={onLogOut}>
+                                Logout
+                            </button>
+                        </ul>
+                    </div>
+
+
                 </div>
-            </div>
 
-            <div className="navbar-collapse collapse w-25 order-3 dual-collapse2 d-flex justify-content-end align-items-center">
-                <ul className="navbar-nav ml-auto">
-                    <span
-                        className='nav-item nav-link text-info'>
-                        ADMIN
-                    </span>
-                    <button
-                        className='nav-item nav-link btn'
-                        onClick={onLogOut}>
-                        Logout
-                    </button>
-                </ul>
+
             </div>
+            
+
+
+            
         </nav>
     )
 }
