@@ -22,34 +22,40 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
             className="form-control mt-3 p-3 me-2 d-flex flex-column justify-content-between">
             <h2 className="text-center mb-1 px-5">Introduzca el monto de la condena</h2>
             <div className="container row g-4">
-                <div className="col-lg-4 col-xxl-3 justify-content-center align-items-center">
-                    <label htmlFor="anios" className="form-label">Años</label>
-                    <input type="number" className="form-control text-center rounded" id="anios" 
+                <div className="col-lg-4 justify-content-center align-items-center">
+                    <label htmlFor="anios" className="form-label">Años: 
+                        <span className="ms-1 fw-bold"> {condenaAnios == 0 ? '' : condenaAnios}</span>
+                    </label>
+                    <input type="range" className="form-range" id="anios" 
                         min="0" max="50" 
                         name="condenaAnios"
                         onChange={onInputChange}
-                        value={`${(condenaAnios === 0) ? "" : condenaAnios}`}/>
+                        value={condenaAnios}/>
                 </div>
-                <div className="col-lg-4 col-xxl-3 justify-content-center align-items-center">
+                <div className="col-lg-4  justify-content-center align-items-center">
 
-                    <label htmlFor="meses" className="form-label">Meses</label>
-                    <input type="number" className="form-control text-center rounded" id="mes" 
+                    <label htmlFor="meses" className="form-label">Meses:
+                        <span className="ms-1 fw-bold"> {condenaMes == 0 ? '' : condenaMes}</span>
+                    </label>
+                    <input type="range" className="form-range" id="mes" 
                         min="0" max="12" 
                         name="condenaMes"
                         onChange={onInputChange}
-                        value={`${(condenaMes === 0) ? "" : condenaMes}`}/>
+                        value={condenaMes}/>
                 </div>
-                <div className="col-lg-4 col-xxl-3 justify-content-center align-items-center">
+                <div className="col-lg-4 justify-content-center align-items-center">
 
-                    <label htmlFor="dias" className="form-label">Días</label>
-                    <input type="number" className="form-control text-center rounded" id="dias"
+                    <label htmlFor="dias" className="form-label">Días: 
+                        <span className="ms-1 fw-bold"> {condenaDias == 0 ? '' : condenaDias}</span>    
+                    </label>
+                    <input type="range" className="form-range" id="dias"
                         min="0" max="30"
                         name="condenaDias"
                         onChange={onInputChange}
-                        value={`${(condenaDias === 0) ? "" : condenaDias}`} />
+                        value={condenaDias} />
 
                 </div>
-                <div className="col-xl-3 d-flex justify-content-start align-items-end mb-4 mb-md-0">
+                <div className="col-lg-4 d-flex justify-content-start align-items-end mb-4">
                     <button className="btn btn-outline-danger me-2"
                     onClick={onResetForm}>
                         Reset

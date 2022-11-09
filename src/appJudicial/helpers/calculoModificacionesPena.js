@@ -23,8 +23,6 @@ export const calculoModificacionesPena = ( art41bis, art41quater,
         } else if (art41bis && art41quater && !art44){
             sumaMinimos = menores + (menores/3);
             sumaMaximos = maximos + (maximos/3);
-            sumaMinimos += (sumaMinimos/3);
-            sumaMaximos += (sumaMaximos/3);
         } else if( art44 && ((art41quater && !art41bis) || (!art41quater && art41bis))){
             sumaMinimos = menores + (menores/3);
             sumaMaximos = maximos + (maximos/3);
@@ -33,8 +31,6 @@ export const calculoModificacionesPena = ( art41bis, art41quater,
         } else {
             sumaMinimos = menores + (menores/3);
             sumaMaximos = maximos + (maximos/3);
-            sumaMinimos += (sumaMinimos/3);
-            sumaMaximos += (sumaMaximos/3);
             sumaMinimos = 2*(sumaMinimos/3);
             sumaMaximos = (sumaMaximos)/2;
         }

@@ -20,7 +20,7 @@ export const AgotamientoPena = ({condena}) => {
   
   return (
     <form
-    className="form-control mt-3 p-3">
+    className="form-control mt-3 p-3 d-flex flex-column justify-content-between">
     <h2 className="text-center mb-3">Calcule la fecha de agotamiento de la pena
     </h2>
     <label htmlFor="fechaComp" className="form-label mb-2">Introduzca la fecha actual o de

@@ -29,6 +29,10 @@ export const PenaPage = () => {
     
     const onCalculoPena = (e) =>{
         e.preventDefault()
+        if(penaMaximaAnios == 0 && penaMaximaDias == 0 & penaMaximaMeses == 0) return
+        if(penaMinimaAnios == 0 && penaMinimaDias == 0 & penaMinimaMeses == 0) return
+        if(penaMaximaAnios*360 + penaMaximaMeses*30 + penaMaximaDias < 
+            penaMinimaAnios*360 + penaMinimaMeses*30 + penaMinimaDias) return
         const {penaAplicable} = calculoModificacionesPena(art41bis, art41quater, art44, {anios: penaMaximaAnios, meses: penaMaximaMeses
         , dias: penaMaximaDias}, {anios: penaMinimaAnios, meses: penaMinimaMeses, dias: penaMinimaDias})
         setFormState({
@@ -49,9 +53,10 @@ export const PenaPage = () => {
             <h3 className="my-3 text-center text-md-start">Introduzca la pena minima: </h3>
             
                 <div className="container row g-4">
-                    <div className="col-4 justify-content-center align-items-center">
-                        <label htmlFor="diasMin" className="form-label">Días</label>
-                        <input type="number" className="form-control text-center rounded" id="diasMin"
+                    <div className="col-md-4 justify-content-center align-items-center">
+                        <label htmlFor="diasMin" className="form-label">Días:   
+                        <b>  {penaMinimaDias == 0 ? "" : penaMinimaDias}</b></label>
+                        <input type="range" className="form-range" id="diasMin"
                         min="0" max="30"
                         onChange={onInputChange}
                         value={penaMinimaDias}
@@ -59,9 +64,9 @@ export const PenaPage = () => {
                         />
                     </div>
                 
-                    <div className="col-4 justify-content-center align-items-center">
-                        <label htmlFor="mesMin" className="form-label">Meses</label>
-                        <input type="number" className="form-control text-center rounded" id="mesMin" 
+                    <div className="col-md-4 justify-content-center align-items-center">
+                        <label htmlFor="mesMin" className="form-label">Meses: <b>   {penaMinimaMeses == 0 ? "" : penaMinimaMeses }</b></label>
+                        <input type="range" className="form-range" id="mesMin" 
                         min="0" max="12"
                         onChange={onInputChange}
                         value={penaMinimaMeses}
@@ -69,10 +74,11 @@ export const PenaPage = () => {
                         />
                     </div>
 
-                    <div className="col-4 justify-content-center align-items-center">
-                        <label htmlFor="aniosMin" className="form-label">Años</label>
-                        <input type="number" className="form-control text-center rounded" id="aniosMin" 
-                        min="0" max="50"
+                    <div className="col-md-4 justify-content-center align-items-center">
+                        <label htmlFor="aniosMin" className="form-label">Años: 
+                        <b>   {penaMinimaAnios == 0 ? "" : penaMinimaAnios}</b></label>
+                        <input type="range" className="form-range" id="aniosMin" 
+                        min="0" max="15"
                         onChange={onInputChange}
                         value={penaMinimaAnios}
                         name="penaMinimaAnios"
@@ -84,9 +90,10 @@ export const PenaPage = () => {
             <h3 className="my-3 text-center text-md-start">Introduzca la pena maxima</h3>
             <div className="container row g-4">
 
-                <div className="col-4 justify-content-center align-items-center">
-                    <label htmlFor="dias" className="form-label">Días</label>
-                    <input type="number" className="form-control text-center rounded" id="diasMax"
+                <div className="col-md-4 justify-content-center align-items-center">
+                    <label htmlFor="dias" className="form-label">Días:
+                    <b>   {penaMaximaDias == 0 ? "" : penaMaximaDias}</b></label>
+                    <input type="range" className="form-range" id="diasMax"
                         min="0" max="30"
                         onChange={onInputChange}
                         value={penaMaximaDias}
@@ -94,20 +101,20 @@ export const PenaPage = () => {
                         />
                 </div>
 
-                <div className="col-4 justify-content-center align-items-center">
+                <div className="col-md-4 justify-content-center align-items-center">
 
-                    <label htmlFor="mesMax" className="form-label">Meses</label>
-                    <input type="number" className="form-control text-center rounded" id="mesMax" 
+                    <label htmlFor="mesMax" className="form-label">Meses: <b>   {penaMaximaMeses == 0 ? "" : penaMaximaMeses}</b></label>
+                    <input type="range" className="form-range" id="mesMax" 
                         min="0" max="12"
                         onChange={onInputChange}
                         value={penaMaximaMeses}
                         name="penaMaximaMeses" 
                         />
                 </div>
-                <div className="col-4 justify-content-center align-items-center">
-                    <label htmlFor="aniosMax" className="form-label">Años</label>
-                    <input type="number" className="form-control text-center rounded" id="aniosMax" 
-                        min="0" max="50" 
+                <div className="col-md-4 justify-content-center align-items-center">
+                    <label htmlFor="aniosMax" className="form-label">Años: <b>   {penaMaximaAnios == 0 ? "" : penaMaximaAnios}</b></label>
+                    <input type="range" className="form-range" id="aniosMax" 
+                        min="0" max="25" 
                         onChange={onInputChange}
                         value={penaMaximaAnios}
                         name="penaMaximaAnios"
