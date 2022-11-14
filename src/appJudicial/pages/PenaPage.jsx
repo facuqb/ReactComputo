@@ -46,7 +46,7 @@ export const PenaPage = () => {
 
 
   return (
-    <div className="pt-2">
+    <div className="p-2">
     <form className="form-control mt-3 pt-5">
             <h2 className="text-center mb-4">Atenuantes y agravantes generales</h2>
             
