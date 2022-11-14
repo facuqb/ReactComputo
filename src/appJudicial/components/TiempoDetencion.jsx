@@ -1,6 +1,11 @@
 import React, { useEffect} from 'react'
 import { calculoDet, totalDet } from '../helpers'
 import { useForm } from '../hooks/useForm'
+import Button from '@mui/material/Button';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined';
+import FunctionsOutlinedIcon from '@mui/icons-material/FunctionsOutlined';
+
 
 
 export const TiempoDetencion = ({onDiasAcumulados}) => {
@@ -103,11 +108,9 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
                     
                 </div>
                 <div className='col-sm-6 col-xl-3 align-self-end mb-3'>
-                    <button
-                        className='btn btn-outline-primary w-100'
-                        onClick={onDetPeriodo}>
+                    <Button variant="outlined" onClick={onDetPeriodo} startIcon={<AddTaskIcon />}>
                         Agregar periodo
-                    </button>
+                    </Button>
                 </div>
 
             </form>
@@ -132,16 +135,22 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
      
                     }
                 <div className='mb-4'>
-                    <button
-                        className='btn btn-outline-primary mx-2'
-                        onClick={onCalcularTotal}>
+                    
+                    <Button 
+                        variant="outlined" 
+                        onClick={onResetForm} 
+                        startIcon={<CleaningServicesOutlinedIcon />}
+                        sx={{mx:1}}
+                        color="error">
+                            Reset
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        onClick={onCalcularTotal}
+                        startIcon={<FunctionsOutlinedIcon />}
+                        sx={{mx:1}}>
                             Total
-                    </button>
-                    <button
-                        className='btn btn-outline-danger mx-2'
-                        onClick={onResetForm}>
-                        Reset
-                    </button>
+                    </Button>
 
                 </div>
             </div>
