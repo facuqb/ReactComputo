@@ -14,6 +14,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import BalanceIcon from '@mui/icons-material/Balance';
 
 const pages = [{name:'Computo-App', path: 'computo'}, {name:'Pena-App', path: 'pena'}];
 const settings = ['Logout'];
@@ -51,6 +52,7 @@ export const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+        <BalanceIcon sx={{display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -123,6 +125,7 @@ export const Navbar = () => {
           >
             Legal Buddy
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(({name,path}) => (
               <Button

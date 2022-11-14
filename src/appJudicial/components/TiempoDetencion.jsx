@@ -3,7 +3,6 @@ import { calculoDet, totalDet } from '../helpers'
 import { useForm } from '../hooks/useForm'
 
 
-
 export const TiempoDetencion = ({onDiasAcumulados}) => {
     const {onInputChange,onResetForm,fechaDet,fechaLibertad, tiempoDet, setFormState,formState,periodosDetencion,totalDetencion,diasTotales} = useForm({fechaDet: "", diasTotales : 0, fechaLibertad: "", tiempoDet: 0, totalDetencion: 0, periodosDetencion: []})
     
@@ -68,6 +67,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
                         className="form-label"
                         >Fecha de detención:
                     </label>
+
                     <input
                         type="date" 
                         className="form-control" id="fechaDet" 

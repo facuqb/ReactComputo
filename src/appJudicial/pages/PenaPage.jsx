@@ -1,3 +1,4 @@
+import { Slider } from "@mui/material"
 import { calculoModificacionesPena } from "../helpers/calculoModificacionesPena"
 import { useForm } from "../hooks/useForm"
 
@@ -52,78 +53,131 @@ export const PenaPage = () => {
             
             <h3 className="my-3 text-center text-md-start">Introduzca la pena minima: </h3>
             
-                <div className="container row g-4">
+                <div className="container row g-4 g-md-5">
                     <div className="col-md-4 justify-content-center align-items-center">
                         <label htmlFor="diasMin" className="form-label">Días:   
                         <b>  {penaMinimaDias == 0 ? "" : penaMinimaDias}</b></label>
-                        <input type="range" className="form-range" id="diasMin"
-                        min="0" max="30"
+                        <Slider
+                        aria-label="Condena dias"
+                        max={30}
                         onChange={onInputChange}
                         value={penaMinimaDias}
                         name="penaMinimaDias"
                         />
+
+
+                        {/* <input type="range" className="form-range" id="diasMin"
+                        min="0" max="30"
+                        onChange={onInputChange}
+                        value={penaMinimaDias}
+                        name="penaMinimaDias"
+                        /> */}
                     </div>
                 
                     <div className="col-md-4 justify-content-center align-items-center">
                         <label htmlFor="mesMin" className="form-label">Meses: <b>   {penaMinimaMeses == 0 ? "" : penaMinimaMeses }</b></label>
-                        <input type="range" className="form-range" id="mesMin" 
-                        min="0" max="12"
+                        
+                        <Slider
+                        aria-label="Condena dias"
+                        max={12}
                         onChange={onInputChange}
                         value={penaMinimaMeses}
                         name="penaMinimaMeses" 
                         />
+
+                        
+                        {/* <input type="range" className="form-range" id="mesMin" 
+                        min="0" max="12"
+                        onChange={onInputChange}
+                        value={penaMinimaMeses}
+                        name="penaMinimaMeses" 
+                        /> */}
                     </div>
 
                     <div className="col-md-4 justify-content-center align-items-center">
                         <label htmlFor="aniosMin" className="form-label">Años: 
                         <b>   {penaMinimaAnios == 0 ? "" : penaMinimaAnios}</b></label>
-                        <input type="range" className="form-range" id="aniosMin" 
-                        min="0" max="15"
+                        
+                        <Slider
+                        aria-label="Condena dias"
+                        max={15}
                         onChange={onInputChange}
                         value={penaMinimaAnios}
                         name="penaMinimaAnios"
                         />
+                        
+                        {/* <input type="range" className="form-range" id="aniosMin" 
+                        min="0" max="15"
+                        onChange={onInputChange}
+                        value={penaMinimaAnios}
+                        name="penaMinimaAnios"
+                        /> */}
                     </div>
  
                 </div>
 
             <h3 className="my-3 text-center text-md-start">Introduzca la pena maxima</h3>
-            <div className="container row g-4">
+            <div className="container row g-4 g-md-5">
 
                 <div className="col-md-4 justify-content-center align-items-center">
                     <label htmlFor="dias" className="form-label">Días:
                     <b>   {penaMaximaDias == 0 ? "" : penaMaximaDias}</b></label>
-                    <input type="range" className="form-range" id="diasMax"
-                        min="0" max="30"
+
+
+                    <Slider
+                        aria-label="Condena dias"
+                        max={30}
                         onChange={onInputChange}
                         value={penaMaximaDias}
                         name="penaMaximaDias"
                         />
+                    {/* <input type="range" className="form-range" id="diasMax"
+                        min="0" max="30"
+                        onChange={onInputChange}
+                        value={penaMaximaDias}
+                        name="penaMaximaDias"
+                        /> */}
                 </div>
 
                 <div className="col-md-4 justify-content-center align-items-center">
 
                     <label htmlFor="mesMax" className="form-label">Meses: <b>   {penaMaximaMeses == 0 ? "" : penaMaximaMeses}</b></label>
-                    <input type="range" className="form-range" id="mesMax" 
-                        min="0" max="12"
+                    
+                    <Slider
+                        aria-label="Condena dias"
+                        max={12}
                         onChange={onInputChange}
                         value={penaMaximaMeses}
                         name="penaMaximaMeses" 
                         />
+                    {/* <input type="range" className="form-range" id="mesMax" 
+                        min="0" max="12"
+                        onChange={onInputChange}
+                        value={penaMaximaMeses}
+                        name="penaMaximaMeses" 
+                        /> */}
                 </div>
                 <div className="col-md-4 justify-content-center align-items-center">
                     <label htmlFor="aniosMax" className="form-label">Años: <b>   {penaMaximaAnios == 0 ? "" : penaMaximaAnios}</b></label>
-                    <input type="range" className="form-range" id="aniosMax" 
-                        min="0" max="25" 
+                    
+                    <Slider
+                        aria-label="Condena dias"
+                        max={25}
                         onChange={onInputChange}
                         value={penaMaximaAnios}
                         name="penaMaximaAnios"
                         />
+                    {/* <input type="range" className="form-range" id="aniosMax" 
+                        min="0" max="25" 
+                        onChange={onInputChange}
+                        value={penaMaximaAnios}
+                        name="penaMaximaAnios"
+                        /> */}
                 </div>
    
             </div>
             <h3 className="my-3 text-center text-md-start">Seleccione agravantes o atenuantes</h3>
-            <div className="row mt-4 g-3">
+            <div className="ms-2 row mt-4 g-3">
                 
                 <div className="form-check col-6 col-md-4">
                     <input className="form-check-input" type="checkbox" id="41bis" 
@@ -131,7 +185,7 @@ export const PenaPage = () => {
                         checked={art41bis}
                         name="art41bis"/>
                     <label className="form-check-label" htmlFor="41bis">
-                        Art. 41 bis - arma de fuego
+                        Art. 41 bis - Arma de fuego
                     </label>
                 </div>
                 {/* <div className="form-check col-3">

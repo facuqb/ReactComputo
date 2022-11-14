@@ -29,6 +29,6 @@ export const calcularAgotamiento = (condena = [], fechaComputo) =>{
         cumplimiento[1]++
         cumplimiento[0] -= 29
     }
-        let agotamiento = `la pena se agota el ${cumplimiento[0]}/${cumplimiento[1]}/${cumplimiento[2]}`;
+        let agotamiento = `La pena se agota el ${cumplimiento[0]}/${cumplimiento[1]}/${cumplimiento[2]}`;
         return {agotamiento}
 }

@@ -1,3 +1,4 @@
+import { Slider } from "@mui/material"
 import { condenaRestante } from "../helpers/"
 import { useForm } from "../hooks/useForm"
 
@@ -26,33 +27,55 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
                     <label htmlFor="anios" className="form-label">Años: 
                         <span className="ms-1 fw-bold"> {condenaAnios == 0 ? '' : condenaAnios}</span>
                     </label>
-                    <input type="range" className="form-range" id="anios" 
+                    <Slider
+                        aria-label="Condena años"
+                        max={50}
+                        name="condenaAnios"
+                        onChange={onInputChange}
+                        value={condenaAnios}
+                        />
+                    {/* <input type="range" className="form-range" id="anios" 
                         min="0" max="50" 
                         name="condenaAnios"
                         onChange={onInputChange}
-                        value={condenaAnios}/>
+                        value={condenaAnios}/> */}
                 </div>
                 <div className="col-lg-4  justify-content-center align-items-center">
 
                     <label htmlFor="meses" className="form-label">Meses:
                         <span className="ms-1 fw-bold"> {condenaMes == 0 ? '' : condenaMes}</span>
                     </label>
-                    <input type="range" className="form-range" id="mes" 
+                    <Slider
+                        aria-label="Condena mes"
+                        max={12}
+                        name="condenaMes"
+                        onChange={onInputChange}
+                        value={condenaMes}
+                        />
+                    {/* <input type="range" className="form-range" id="mes" 
                         min="0" max="12" 
                         name="condenaMes"
                         onChange={onInputChange}
-                        value={condenaMes}/>
+                        value={condenaMes}/> */}
                 </div>
                 <div className="col-lg-4 justify-content-center align-items-center">
 
                     <label htmlFor="dias" className="form-label">Días: 
                         <span className="ms-1 fw-bold"> {condenaDias == 0 ? '' : condenaDias}</span>    
                     </label>
-                    <input type="range" className="form-range" id="dias"
+                    <Slider
+                        aria-label="Condena dias"
+                        max={30}
+                        name="condenaDias"
+                        onChange={onInputChange}
+                        value={condenaDias}
+                        />
+                    
+                    {/* <input type="range" className="form-range" id="dias"
                         min="0" max="30"
                         name="condenaDias"
                         onChange={onInputChange}
-                        value={condenaDias} />
+                        value={condenaDias} /> */}
 
                 </div>
                 <div className="col-lg-4 d-flex justify-content-start align-items-end mb-4">
