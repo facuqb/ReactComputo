@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext";
 
-// import { Google } from "@mui/icons-material"
 import { Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { Link as LinkRouter} from "react-router-dom"
 import { AuthLayout } from "../layout/AuthLayout"

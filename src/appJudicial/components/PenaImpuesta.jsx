@@ -1,4 +1,5 @@
-import { Slider } from "@mui/material"
+
+import  Slider  from "@mui/material/Slider"
 import { condenaRestante } from "../helpers/"
 import { useForm } from "../hooks/useForm"
 
@@ -70,8 +71,8 @@ export const PenaImpuesta = ({diasAcumulados,onCondena}) => {
                         onChange={onInputChange}
                         value={condenaDias}
                         />
-                    
-                    {/* <input type="range" className="form-range" id="dias"
+{/*                     
+                    <input type="range" className="form-range" id="dias"
                         min="0" max="30"
                         name="condenaDias"
                         onChange={onInputChange}

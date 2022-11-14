@@ -1,4 +1,4 @@
-import { Slider } from "@mui/material"
+import  Slider  from "@mui/material/Slider"
 import { calculoModificacionesPena } from "../helpers/calculoModificacionesPena"
 import { useForm } from "../hooks/useForm"
 
@@ -57,6 +57,7 @@ export const PenaPage = () => {
                     <div className="col-md-4 justify-content-center align-items-center">
                         <label htmlFor="diasMin" className="form-label">Días:   
                         <b>  {penaMinimaDias == 0 ? "" : penaMinimaDias}</b></label>
+                        
                         <Slider
                         aria-label="Condena dias"
                         max={30}
