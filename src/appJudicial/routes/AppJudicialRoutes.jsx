@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Navbar } from "../../ui"
-import { ComputoPage, HonorariosPage, PenaPage } from "../pages"
+import { Footer } from "../components/Footer"
+import { ComputoPage, HonorariosPage, PenaPage} from "../pages"
 
 
 export const AppJudicialRoutes = () => {
@@ -18,6 +19,7 @@ export const AppJudicialRoutes = () => {
                 
             </Routes>
         </div>
+        <Footer />
     </>
   )
 }

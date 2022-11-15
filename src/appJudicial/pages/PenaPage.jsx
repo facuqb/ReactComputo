@@ -1,6 +1,10 @@
 import  Slider  from "@mui/material/Slider"
 import { calculoModificacionesPena } from "../helpers/calculoModificacionesPena"
 import { useForm } from "../hooks/useForm"
+import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServicesOutlined";
+import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
+import { Button } from "@mui/material";
+
 
 export const PenaPage = () => {
 
@@ -48,7 +52,7 @@ export const PenaPage = () => {
 
   return (
     <div className="p-2">
-    <form className="form-control mt-3 pt-5">
+    <form className="form-control mt-3 pt-5 pb-3">
             <h2 className="text-center mb-4">Atenuantes y agravantes generales</h2>
             
             <h3 className="my-3 text-center text-md-start">Introduzca la pena minima: </h3>
@@ -238,16 +242,35 @@ export const PenaPage = () => {
             </div>
             
         <div className="d-flex justify-content-end justify-content-md-start">
-            <button
+
+        <Button
+            variant="outlined"
+            onClick={onResetForm}
+            startIcon={<CleaningServicesOutlinedIcon />}
+            sx={{ mt: 4 }}
+            color="error"
+          >
+            Limpiar
+          </Button>
+          {/* <button
             className="btn btn-outline-danger mt-4"
             onClick={onResetForm}>
             Reset
-            </button>
-            <button
+            </button> */}
+          <Button
+            variant="outlined"
+            onClick={onCalculoPena}
+            startIcon={<FunctionsOutlinedIcon />}
+            sx={{mt: 4, mx: 2}}
+          >
+            Total
+          </Button>
+            
+            {/* <button
             className="btn btn-outline-primary mt-4 mx-2"
             onClick={onCalculoPena}>
             Calcular
-            </button>
+            </button> */}
         </div>
             <label className="form-label mt-4">
                 Pena

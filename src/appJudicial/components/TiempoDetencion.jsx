@@ -142,7 +142,7 @@ export const TiempoDetencion = ({onDiasAcumulados}) => {
                         startIcon={<CleaningServicesOutlinedIcon />}
                         sx={{mx:1}}
                         color="error">
-                            Reset
+                            Limpiar
                     </Button>
                     <Button
                         variant="outlined"

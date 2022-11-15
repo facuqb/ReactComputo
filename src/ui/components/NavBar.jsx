@@ -50,7 +50,7 @@ export const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
         <BalanceIcon sx={{display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
